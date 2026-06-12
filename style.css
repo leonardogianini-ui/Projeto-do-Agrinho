@@ -1,68 +1,327 @@
-body{
-    margin:0;
-    font-family:Arial, sans-serif;
-    background:#f4fff4;
+// =========================
+// AGROBALANCE - AGRINHO 2026
+// =========================
+
+// =========================
+// ROLAR PARA DIAGNÓSTICO
+// =========================
+
+function rolarDiagnostico() {
+
+    document
+        .getElementById("diagnostico")
+        .scrollIntoView({
+            behavior: "smooth"
+        });
+
 }
 
-header{
-    background:#2e7d32;
-    color:white;
-    text-align:center;
-    padding:30px;
+// =========================
+// GERAR RELATÓRIO
+// =========================
+
+function gerarRelatorio() {
+
+    let produtor =
+        document.getElementById("produtor").value;
+
+    let propriedade =
+        document.getElementById("propriedade").value;
+
+    let municipio =
+        document.getElementById("municipio").value;
+
+    let alqueires =
+        Number(document.getElementById("alqueires").value);
+
+    let cultura =
+        document.getElementById("cultura").value;
+
+    let solo =
+        document.getElementById("solo").value;
+
+    let preservacao =
+        document.getElementById("preservacao").value;
+
+    let mata =
+        document.getElementById("mata").value;
+
+    let nascente =
+        document.getElementById("nascente").value;
+
+    if (
+        produtor === "" ||
+        propriedade === "" ||
+        municipio === "" ||
+        alqueires <= 0
+    ) {
+
+        document.getElementById("resultado").innerHTML = `
+            <h3>⚠️ Atenção</h3>
+            <p>Preencha todos os campos obrigatórios.</p>
+        `;
+
+        return;
+    }
+
+    // =========================
+    // CLASSIFICAÇÃO
+    // =========================
+
+    let classificacao = "";
+
+    if (alqueires <= 20) {
+
+        classificacao = "Pequena Propriedade";
+
+    } else if (alqueires <= 100) {
+
+        classificacao = "Média Propriedade";
+
+    } else {
+
+        classificacao = "Grande Propriedade";
+
+    }
+
+    // =========================
+    // ÍNDICE
+    // =========================
+
+    let indice = 50;
+
+    if (solo === "Boa") indice += 15;
+    if (solo === "Regular") indice += 8;
+
+    if (preservacao === "Sim") indice += 10;
+    if (mata === "Sim") indice += 10;
+    if (nascente === "Sim") indice += 10;
+
+    if (indice > 100) {
+        indice = 100;
+    }
+
+    let nivel = "";
+
+    if (indice >= 90) {
+
+        nivel = "🟢 Excelente";
+
+    } else if (indice >= 75) {
+
+        nivel = "🟡 Bom";
+
+    } else if (indice >= 60) {
+
+        nivel = "🟠 Regular";
+
+    } else {
+
+        nivel = "🔴 Precisa Melhorar";
+
+    }
+
+    // =========================
+    // RECOMENDAÇÕES
+    // =========================
+
+    let recomendacoes = [];
+
+    if (solo !== "Boa") {
+        recomendacoes.push("🌱 Melhorar a qualidade do solo.");
+    }
+
+    if (preservacao === "Não") {
+        recomendacoes.push("🌳 Criar áreas de preservação.");
+    }
+
+    if (mata === "Não") {
+        recomendacoes.push("🌿 Preservar vegetação nativa.");
+    }
+
+    if (nascente === "Não") {
+        recomendacoes.push("💧 Proteger nascentes.");
+    }
+
+    recomendacoes.push("♻️ Utilizar biofertilizantes.");
+    recomendacoes.push("🚜 Adotar rotação de culturas.");
+    recomendacoes.push("🌾 Incentivar cobertura vegetal.");
+    recomendacoes.push("💦 Economizar água na irrigação.");
+
+    // =========================
+    // RELATÓRIO
+    // =========================
+
+    document.getElementById("resultado").innerHTML = `
+
+        <h3>📊 Relatório AgroBalance</h3>
+
+        <p><strong>Produtor:</strong> ${produtor}</p>
+
+        <p><strong>Propriedade:</strong> ${propriedade}</p>
+
+        <p><strong>Município:</strong> ${municipio}</p>
+
+        <p><strong>Cultura:</strong> ${cultura}</p>
+
+        <p><strong>Área:</strong> ${alqueires} alqueires</p>
+
+        <p><strong>Classificação:</strong> ${classificacao}</p>
+
+        <p><strong>Índice de Sustentabilidade:</strong> ${indice}/100</p>
+
+        <p><strong>Nível:</strong> ${nivel}</p>
+
+        <div class="barra">
+            <div
+                class="progresso"
+                style="width:${indice}%">
+            </div>
+        </div>
+
+        <br>
+
+        <h4>Recomendações:</h4>
+
+        <ul>
+
+            ${recomendacoes.map(item =>
+                `<li>${item}</li>`
+            ).join("")}
+
+        </ul>
+
+    `;
 }
 
-.container{
-    background:white;
-    width:80%;
-    max-width:700px;
-    margin:20px auto;
-    padding:20px;
-    border-radius:10px;
-    box-shadow:0 0 10px rgba(0,0,0,0.1);
+// =========================
+// CALCULADORA VERDE
+// =========================
+
+function calcularCarbono() {
+
+    let hectares =
+        Number(
+            document.getElementById("hectares").value
+        );
+
+    if (hectares <= 0) {
+
+        document.getElementById("carbono").innerHTML = `
+            <p>Digite uma área válida.</p>
+        `;
+
+        return;
+    }
+
+    let carbono = hectares * 2;
+    let arvores = carbono * 5;
+    let economia = hectares * 150;
+    let economia5anos = economia * 5;
+
+    document.getElementById("carbono").innerHTML = `
+
+        <h3>🌳 Benefícios Sustentáveis</h3>
+
+        <p>
+            🌲 Árvores equivalentes:
+            <strong>${arvores}</strong>
+        </p>
+
+        <p>
+            ♻️ Redução estimada:
+            <strong>${carbono} t de carbono</strong>
+        </p>
+
+        <p>
+            💰 Economia anual:
+            <strong>R$ ${economia.toLocaleString("pt-BR")}</strong>
+        </p>
+
+        <p>
+            💵 Economia em 5 anos:
+            <strong>R$ ${economia5anos.toLocaleString("pt-BR")}</strong>
+        </p>
+
+    `;
 }
 
-label{
-    display:block;
-    margin-top:10px;
+// =========================
+// SIMULADOR
+// =========================
+
+function simularCenario() {
+
+    document.getElementById("simulacao").innerHTML = `
+
+        <h3>📈 Simulação de Melhorias</h3>
+
+        <table>
+
+            <tr>
+                <th>Indicador</th>
+                <th>Atual</th>
+                <th>Melhorado</th>
+            </tr>
+
+            <tr>
+                <td>Produção</td>
+                <td>100%</td>
+                <td>115%</td>
+            </tr>
+
+            <tr>
+                <td>Sustentabilidade</td>
+                <td>60%</td>
+                <td>90%</td>
+            </tr>
+
+            <tr>
+                <td>Economia</td>
+                <td>R$ 10.000</td>
+                <td>R$ 13.500</td>
+            </tr>
+
+        </table>
+
+    `;
 }
 
-select,input{
-    width:100%;
-    padding:10px;
-    margin-top:5px;
-}
+// =========================
+// CURIOSIDADES
+// =========================
 
-button{
-    margin-top:15px;
-    width:100%;
-    padding:12px;
-    border:none;
-    border-radius:5px;
-    background:#43a047;
-    color:white;
-    cursor:pointer;
-    font-size:16px;
-}
+const curiosidades = [
 
-button:hover{
-    background:#2e7d32;
-}
+    "🌱 A rotação de culturas ajuda a manter a fertilidade do solo.",
 
-#resultado,#carbono{
-    margin-top:20px;
-    padding:15px;
-    background:#e8f5e9;
-    border-radius:8px;
-}
+    "💧 Preservar nascentes garante água para as futuras gerações.",
 
-.badges{
-    display:flex;
-    flex-wrap:wrap;
-    gap:10px;
-}
+    "♻️ Biofertilizantes reduzem impactos ambientais.",
 
-.badges div{
-    background:#c8e6c9;
-    padding:10px;
-    border-radius:8px;
+    "🌳 Árvores absorvem carbono da atmosfera.",
+
+    "🚜 O plantio direto reduz a erosão do solo.",
+
+    "🌾 Cobertura vegetal protege o solo contra o desgaste.",
+
+    "🌎 Agricultura sustentável melhora a produtividade a longo prazo.",
+
+    "☀️ Energia solar pode reduzir custos na propriedade rural."
+
+];
+
+// =========================
+// MOSTRAR CURIOSIDADE
+// =========================
+
+function mostrarCuriosidade() {
+
+    let numero = Math.floor(
+        Math.random() * curiosidades.length
+    );
+
+    document.getElementById("curiosidade").innerHTML =
+        curiosidades[numero];
+
 }
