@@ -1,425 +1,221 @@
-/* =========================
-   CONFIGURAÇÕES GERAIS
-========================= */
+// ===========================
+// RELATÓRIO DA PROPRIEDADE
+// ===========================
 
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-}
+function gerarRelatorio() {
 
-html{
-    scroll-behavior:smooth;
-}
+    let alqueires = Number(document.getElementById("alqueires").value);
+    let solo = document.getElementById("solo").value;
+    let arvores = document.getElementById("arvores").value;
+    let nascente = document.getElementById("nascente").value;
+    let quimicos = document.getElementById("quimicos").value;
+    let cultura = document.getElementById("cultura").value;
 
-body{
-    font-family:Arial, sans-serif;
-    background:#f4f9f4;
-    color:#333;
-    line-height:1.6;
-}
+    if (alqueires <= 0) {
 
-/* =========================
-   CABEÇALHO
-========================= */
+        document.getElementById("resultado").innerHTML =
+        "<p>⚠️ Digite uma quantidade válida de alqueires.</p>";
 
-.hero{
-    min-height:100vh;
-
-    background:linear-gradient(
-        135deg,
-        #1b5e20,
-        #2e7d32,
-        #43a047
-    );
-
-    color:white;
-
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
-    align-items:center;
-
-    text-align:center;
-
-    padding:20px;
-}
-
-.hero h1{
-    font-size:4rem;
-    margin-bottom:20px;
-}
-
-.hero p{
-    font-size:1.3rem;
-    max-width:700px;
-    margin-bottom:25px;
-}
-
-.hero button{
-    width:auto;
-    padding:15px 30px;
-}
-
-/* =========================
-   CONTAINERS
-========================= */
-
-.container{
-    width:90%;
-    max-width:1100px;
-
-    margin:30px auto;
-
-    background:white;
-
-    padding:25px;
-
-    border-radius:15px;
-
-    box-shadow:
-    0 5px 15px rgba(0,0,0,0.1);
-
-    animation:aparecer 0.7s ease;
-}
-
-.container h2{
-    color:#2e7d32;
-    margin-bottom:20px;
-
-    border-left:6px solid #43a047;
-
-    padding-left:10px;
-}
-
-/* =========================
-   FORMULÁRIOS
-========================= */
-
-label{
-    display:block;
-    margin-top:15px;
-    font-weight:bold;
-}
-
-input,
-select{
-    width:100%;
-
-    padding:12px;
-
-    margin-top:5px;
-
-    border:1px solid #ccc;
-
-    border-radius:8px;
-
-    font-size:15px;
-}
-
-input:focus,
-select:focus{
-    outline:none;
-    border-color:#43a047;
-}
-
-/* =========================
-   BOTÕES
-========================= */
-
-button{
-
-    width:100%;
-
-    padding:14px;
-
-    margin-top:20px;
-
-    border:none;
-
-    border-radius:8px;
-
-    background:#43a047;
-
-    color:white;
-
-    font-size:16px;
-
-    font-weight:bold;
-
-    cursor:pointer;
-
-    transition:0.3s;
-}
-
-button:hover{
-    background:#2e7d32;
-    transform:translateY(-2px);
-}
-
-/* =========================
-   RESULTADOS
-========================= */
-
-#resultado,
-#carbono,
-#simulacao,
-#curiosidade{
-
-    margin-top:20px;
-
-    padding:20px;
-
-    border-radius:10px;
-
-    background:#e8f5e9;
-
-    border-left:6px solid #43a047;
-}
-
-/* =========================
-   CARDS
-========================= */
-
-.cards{
-    display:grid;
-
-    grid-template-columns:
-    repeat(auto-fit,minmax(220px,1fr));
-
-    gap:15px;
-}
-
-.card{
-
-    background:#e8f5e9;
-
-    padding:20px;
-
-    border-radius:10px;
-
-    text-align:center;
-
-    font-weight:bold;
-
-    transition:0.3s;
-}
-
-.card:hover{
-    transform:scale(1.05);
-}
-
-/* =========================
-   CULTURAS
-========================= */
-
-.culturas{
-
-    display:grid;
-
-    grid-template-columns:
-    repeat(auto-fit,minmax(150px,1fr));
-
-    gap:15px;
-}
-
-.culturas div{
-
-    background:#c8e6c9;
-
-    padding:15px;
-
-    text-align:center;
-
-    border-radius:10px;
-
-    font-weight:bold;
-
-    transition:0.3s;
-}
-
-.culturas div:hover{
-    transform:scale(1.05);
-}
-
-/* =========================
-   MAPA
-========================= */
-
-.mapa{
-
-    display:grid;
-
-    grid-template-columns:
-    repeat(auto-fit,minmax(200px,1fr));
-
-    gap:15px;
-}
-
-.mapa div{
-
-    background:#e8f5e9;
-
-    padding:20px;
-
-    border-radius:10px;
-
-    text-align:center;
-
-    font-weight:bold;
-}
-
-/* =========================
-   CONQUISTAS
-========================= */
-
-.badges{
-
-    display:grid;
-
-    grid-template-columns:
-    repeat(auto-fit,minmax(220px,1fr));
-
-    gap:15px;
-}
-
-.badges div{
-
-    background:#dcedc8;
-
-    padding:20px;
-
-    border-radius:10px;
-
-    text-align:center;
-
-    font-weight:bold;
-
-    transition:0.3s;
-}
-
-.badges div:hover{
-    transform:scale(1.05);
-}
-
-/* =========================
-   BARRA DE SUSTENTABILIDADE
-========================= */
-
-.barra{
-
-    width:100%;
-
-    height:30px;
-
-    background:#ddd;
-
-    border-radius:20px;
-
-    overflow:hidden;
-
-    margin-top:15px;
-}
-
-.progresso{
-
-    height:100%;
-
-    background:linear-gradient(
-        90deg,
-        #66bb6a,
-        #2e7d32
-    );
-
-    width:0%;
-
-    transition:1s;
-}
-
-/* =========================
-   TABELAS
-========================= */
-
-table{
-
-    width:100%;
-
-    border-collapse:collapse;
-
-    margin-top:15px;
-}
-
-table th{
-
-    background:#43a047;
-
-    color:white;
-
-    padding:10px;
-}
-
-table td{
-
-    border:1px solid #ccc;
-
-    padding:10px;
-
-    text-align:center;
-}
-
-/* =========================
-   RODAPÉ
-========================= */
-
-footer{
-
-    background:#1b5e20;
-
-    color:white;
-
-    text-align:center;
-
-    padding:30px;
-}
-
-footer p{
-    margin-top:8px;
-}
-
-/* =========================
-   ANIMAÇÃO
-========================= */
-
-@keyframes aparecer{
-
-    from{
-        opacity:0;
-        transform:translateY(20px);
+        return;
     }
 
-    to{
-        opacity:1;
-        transform:translateY(0);
+    // ===========================
+    // CLASSIFICAÇÃO
+    // ===========================
+
+    let classificacao = "";
+
+    if (alqueires <= 20) {
+
+        classificacao = "🌱 Pequena Propriedade";
+
+    } else if (alqueires <= 100) {
+
+        classificacao = "🚜 Média Propriedade";
+
+    } else {
+
+        classificacao = "🏭 Grande Propriedade";
+
     }
 
+    // ===========================
+    // ÍNDICE DE SUSTENTABILIDADE
+    // ===========================
+
+    let indice = 50;
+
+    if (solo === "Boa") {
+        indice += 15;
+    }
+
+    if (solo === "Regular") {
+        indice += 5;
+    }
+
+    if (arvores === "Sim") {
+        indice += 15;
+    }
+
+    if (nascente === "Sim") {
+        indice += 10;
+    }
+
+    if (quimicos === "Não") {
+        indice += 10;
+    }
+
+    if (indice > 100) {
+        indice = 100;
+    }
+
+    // ===========================
+    // NÍVEL
+    // ===========================
+
+    let nivel = "";
+
+    if (indice >= 80) {
+
+        nivel = "🟢 Excelente";
+
+    } else if (indice >= 60) {
+
+        nivel = "🟡 Bom";
+
+    } else {
+
+        nivel = "🔴 Precisa Melhorar";
+
+    }
+
+    // ===========================
+    // RECOMENDAÇÕES
+    // ===========================
+
+    let recomendacoes = "";
+
+    if (solo !== "Boa") {
+        recomendacoes += "<li>🌱 Melhorar a qualidade do solo.</li>";
+    }
+
+    if (arvores === "Não") {
+        recomendacoes += "<li>🌳 Plantar ou preservar árvores.</li>";
+    }
+
+    if (nascente === "Não") {
+        recomendacoes += "<li>💧 Preservar recursos hídricos.</li>";
+    }
+
+    if (quimicos === "Sim") {
+        recomendacoes += "<li>♻️ Reduzir produtos químicos.</li>";
+    }
+
+    recomendacoes += "<li>🚜 Fazer rotação de culturas.</li>";
+    recomendacoes += "<li>🌿 Utilizar biofertilizantes.</li>";
+
+    // ===========================
+    // RESULTADO
+    // ===========================
+
+    document.getElementById("resultado").innerHTML = `
+
+        <h3>📋 Resultado do Diagnóstico</h3>
+
+        <p><strong>Cultura:</strong> ${cultura}</p>
+
+        <p><strong>Tamanho:</strong> ${classificacao}</p>
+
+        <p><strong>Índice de Sustentabilidade:</strong> ${indice}/100</p>
+
+        <p><strong>Nível:</strong> ${nivel}</p>
+
+        <h4>✅ Recomendações</h4>
+
+        <ul>
+            ${recomendacoes}
+        </ul>
+
+    `;
 }
 
-/* =========================
-   RESPONSIVO
-========================= */
+// ===========================
+// CALCULADORA VERDE
+// ===========================
 
-@media(max-width:768px){
+function calcularCarbono() {
 
-    .hero h1{
-        font-size:2.5rem;
+    let alqueires =
+    Number(document.getElementById("calcAlqueires").value);
+
+    if (alqueires <= 0) {
+
+        document.getElementById("carbono").innerHTML =
+        "<p>⚠️ Digite uma quantidade válida.</p>";
+
+        return;
     }
 
-    .hero p{
-        font-size:1rem;
-    }
+    let carbono = alqueires * 2;
+    let arvores = alqueires * 10;
+    let economia = alqueires * 150;
 
-    .container{
-        width:95%;
-    }
+    document.getElementById("carbono").innerHTML = `
 
+        <h3>🌳 Resultado Ambiental</h3>
+
+        <p>
+            🌲 Árvores equivalentes:
+            <strong>${arvores}</strong>
+        </p>
+
+        <p>
+            ♻️ Redução estimada de carbono:
+            <strong>${carbono} toneladas</strong>
+        </p>
+
+        <p>
+            💰 Economia anual estimada:
+            <strong>R$ ${economia.toLocaleString('pt-BR')}</strong>
+        </p>
+
+    `;
+}
+
+// ===========================
+// CURIOSIDADES
+// ===========================
+
+const curiosidades = [
+
+    "🌱 A rotação de culturas melhora a fertilidade do solo.",
+
+    "💧 Preservar nascentes ajuda a garantir água para o futuro.",
+
+    "🌳 Árvores absorvem gás carbônico da atmosfera.",
+
+    "♻️ Biofertilizantes ajudam a reduzir impactos ambientais.",
+
+    "🚜 O plantio direto reduz a erosão do solo.",
+
+    "🌾 A cobertura vegetal protege o solo contra o desgaste.",
+
+    "☀️ A energia solar pode reduzir custos na propriedade.",
+
+    "🌎 Agricultura sustentável aumenta a produtividade a longo prazo."
+
+];
+
+// ===========================
+// MOSTRAR CURIOSIDADE
+// ===========================
+
+function mostrarCuriosidade() {
+
+    let numero =
+    Math.floor(Math.random() * curiosidades.length);
+
+    document.getElementById("curiosidade").innerHTML =
+
+    `<p>${curiosidades[numero]}</p>`;
 }
