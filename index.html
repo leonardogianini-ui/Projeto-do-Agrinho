@@ -1,75 +1,311 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AgroBalance</title>
+
+    <title>AgroBalance | Agrinho 2026</title>
+
     <link rel="stylesheet" href="style.css">
+
 </head>
+
 <body>
 
-<header>
-    <h1>🌱 AgroBalance</h1>
-    <p>Agricultura Sustentável para o Futuro</p>
-</header>
+    <!-- CABEÇALHO -->
 
-<section class="container">
-    <h2>Diagnóstico da Propriedade</h2>
+    <header class="hero">
 
-    <label>Tamanho da propriedade</label>
-    <select id="tamanho">
-        <option>Pequena</option>
-        <option>Média</option>
-        <option>Grande</option>
-    </select>
+        <h1>🌱 AgroBalance</h1>
 
-    <label>Cultura principal</label>
-    <select id="cultura">
-        <option>Soja</option>
-        <option>Milho</option>
-        <option>Trigo</option>
-        <option>Hortaliças</option>
-    </select>
+        <p>
+            Produzir mais, preservar melhor e garantir o futuro.
+        </p>
 
-    <label>Condição do solo</label>
-    <select id="solo">
-        <option>Boa</option>
-        <option>Regular</option>
-        <option>Ruim</option>
-    </select>
+        <button onclick="rolarDiagnostico()">
+            🚜 Começar Diagnóstico
+        </button>
 
-    <label>Possui área de preservação?</label>
-    <select id="preservacao">
-        <option>Sim</option>
-        <option>Não</option>
-    </select>
+    </header>
 
-    <button onclick="gerarRelatorio()">📊 Gerar Relatório</button>
+    <!-- SOBRE -->
 
-    <div id="resultado"></div>
-</section>
+    <section class="container">
 
-<section class="container">
-    <h2>🌳 Calculadora Verde</h2>
+        <h2>Sobre o Projeto</h2>
 
-    <input type="number" id="hectares" placeholder="Quantidade de hectares">
+        <p>
+            O AgroBalance é uma plataforma digital criada para ajudar agricultores
+            a analisar suas propriedades e encontrar soluções sustentáveis para
+            aumentar a produtividade e preservar o meio ambiente.
+        </p>
 
-    <button onclick="calcularCarbono()">Calcular</button>
+    </section>
 
-    <div id="carbono"></div>
-</section>
+    <!-- BENEFÍCIOS -->
 
-<section class="container">
-    <h2>🏆 Conquistas</h2>
+    <section class="container">
 
-    <div class="badges">
-        <div>🌱 Agricultor Sustentável</div>
-        <div>💧 Protetor das Águas</div>
-        <div>🌳 Amigo da Natureza</div>
-    </div>
-</section>
+        <h2>Benefícios da Agricultura Sustentável</h2>
 
-<script src="script.js"></script>
+        <div class="cards">
+
+            <div class="card">
+                🌱 Solo mais saudável
+            </div>
+
+            <div class="card">
+                💧 Economia de água
+            </div>
+
+            <div class="card">
+                ♻️ Menor impacto ambiental
+            </div>
+
+            <div class="card">
+                💰 Maior rentabilidade
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- DIAGNÓSTICO -->
+
+    <section class="container" id="diagnostico">
+
+        <h2>📋 Diagnóstico da Propriedade</h2>
+
+        <label>Nome do Produtor</label>
+        <input type="text" id="produtor" required>
+
+        <label>Nome da Propriedade</label>
+        <input type="text" id="propriedade" required>
+
+        <label>Município</label>
+        <input type="text" id="municipio" required>
+
+        <label>Área da Propriedade (Alqueires)</label>
+        <input type="number" id="alqueires" min="1" required>
+
+        <label>Cultura Principal</label>
+
+        <select id="cultura">
+
+            <option>Soja</option>
+            <option>Milho</option>
+            <option>Feijão</option>
+            <option>Trigo</option>
+            <option>Arroz</option>
+            <option>Mandioca</option>
+            <option>Batata</option>
+            <option>Cebola</option>
+            <option>Alho</option>
+            <option>Tomate</option>
+            <option>Cana-de-açúcar</option>
+            <option>Café</option>
+            <option>Laranja</option>
+            <option>Banana</option>
+            <option>Maçã</option>
+            <option>Uva</option>
+            <option>Abacaxi</option>
+            <option>Melancia</option>
+            <option>Melão</option>
+            <option>Hortaliças</option>
+
+        </select>
+
+        <label>Condição do Solo</label>
+
+        <select id="solo">
+
+            <option>Boa</option>
+            <option>Regular</option>
+            <option>Ruim</option>
+
+        </select>
+
+        <label>Possui Área de Preservação?</label>
+
+        <select id="preservacao">
+
+            <option>Sim</option>
+            <option>Não</option>
+
+        </select>
+
+        <label>Possui Mata Nativa?</label>
+
+        <select id="mata">
+
+            <option>Sim</option>
+            <option>Não</option>
+
+        </select>
+
+        <label>Possui Nascentes?</label>
+
+        <select id="nascente">
+
+            <option>Sim</option>
+            <option>Não</option>
+
+        </select>
+
+        <button onclick="gerarRelatorio()">
+
+            📊 Gerar Relatório
+
+        </button>
+
+        <div id="resultado"></div>
+
+    </section>
+
+    <!-- CALCULADORA VERDE -->
+
+    <section class="container">
+
+        <h2>🌳 Calculadora Verde</h2>
+
+        <input
+            type="number"
+            id="hectares"
+            placeholder="Digite a quantidade de hectares">
+
+        <button onclick="calcularCarbono()">
+
+            Calcular Benefícios
+
+        </button>
+
+        <div id="carbono"></div>
+
+    </section>
+
+    <!-- SIMULADOR -->
+
+    <section class="container">
+
+        <h2>📈 Simulador de Cenários</h2>
+
+        <button onclick="simularCenario()">
+
+            Simular Melhorias
+
+        </button>
+
+        <div id="simulacao"></div>
+
+    </section>
+
+    <!-- MAPA AMBIENTAL -->
+
+    <section class="container">
+
+        <h2>🗺️ Mapa Ambiental</h2>
+
+        <div class="mapa">
+
+            <div>🌳 Mata Nativa</div>
+
+            <div>💧 Nascentes</div>
+
+            <div>🚜 Área de Cultivo</div>
+
+            <div>🌱 Área Sustentável</div>
+
+        </div>
+
+    </section>
+
+    <!-- CULTURAS -->
+
+    <section class="container">
+
+        <h2>🌾 Principais Culturas</h2>
+
+        <div class="culturas">
+
+            <div>🌱 Soja</div>
+            <div>🌽 Milho</div>
+            <div>🫘 Feijão</div>
+            <div>🌾 Trigo</div>
+            <div>🍚 Arroz</div>
+            <div>☕ Café</div>
+            <div>🍌 Banana</div>
+            <div>🍊 Laranja</div>
+            <div>🍇 Uva</div>
+            <div>🍍 Abacaxi</div>
+
+        </div>
+
+    </section>
+
+    <!-- CONQUISTAS -->
+
+    <section class="container">
+
+        <h2>🏆 Conquistas</h2>
+
+        <div class="badges">
+
+            <div>🌱 Agricultor Sustentável</div>
+
+            <div>♻️ Guardião do Solo</div>
+
+            <div>💧 Protetor das Águas</div>
+
+            <div>🌳 Amigo da Natureza</div>
+
+        </div>
+
+    </section>
+
+    <!-- CURIOSIDADES -->
+
+    <section class="container">
+
+        <h2>💡 Curiosidades</h2>
+
+        <button onclick="mostrarCuriosidade()">
+
+            Mostrar Curiosidade
+
+        </button>
+
+        <div id="curiosidade"></div>
+
+    </section>
+
+    <!-- CRÉDITOS -->
+
+    <footer>
+
+        <h3>Projeto Agrinho 2026</h3>
+
+        <p>
+            Tecnologia e Sustentabilidade no Campo
+        </p>
+
+        <p>
+            Leonardo Gianini
+        </p>
+
+        <p>
+            Pedro Henrique de Oliveira Alves
+        </p>
+
+        <p>
+            Turma: 1º Ano
+        </p>
+
+    </footer>
+
+    <script src="script.js"></script>
 
 </body>
+
 </html>
