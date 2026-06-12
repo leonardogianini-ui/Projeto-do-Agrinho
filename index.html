@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AgroBalance</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+    <h1>🌱 AgroBalance</h1>
+    <p>Agricultura Sustentável para o Futuro</p>
+</header>
+
+<section class="container">
+    <h2>Diagnóstico da Propriedade</h2>
+
+    <label>Tamanho da propriedade</label>
+    <select id="tamanho">
+        <option>Pequena</option>
+        <option>Média</option>
+        <option>Grande</option>
+    </select>
+
+    <label>Cultura principal</label>
+    <select id="cultura">
+        <option>Soja</option>
+        <option>Milho</option>
+        <option>Trigo</option>
+        <option>Hortaliças</option>
+    </select>
+
+    <label>Condição do solo</label>
+    <select id="solo">
+        <option>Boa</option>
+        <option>Regular</option>
+        <option>Ruim</option>
+    </select>
+
+    <label>Possui área de preservação?</label>
+    <select id="preservacao">
+        <option>Sim</option>
+        <option>Não</option>
+    </select>
+
+    <button onclick="gerarRelatorio()">📊 Gerar Relatório</button>
+
+    <div id="resultado"></div>
+</section>
+
+<section class="container">
+    <h2>🌳 Calculadora Verde</h2>
+
+    <input type="number" id="hectares" placeholder="Quantidade de hectares">
+
+    <button onclick="calcularCarbono()">Calcular</button>
+
+    <div id="carbono"></div>
+</section>
+
+<section class="container">
+    <h2>🏆 Conquistas</h2>
+
+    <div class="badges">
+        <div>🌱 Agricultor Sustentável</div>
+        <div>💧 Protetor das Águas</div>
+        <div>🌳 Amigo da Natureza</div>
+    </div>
+</section>
+
+<script src="script.js"></script>
+
+</body>
+</html>
