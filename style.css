@@ -144,7 +144,7 @@ button:hover{
 ========================== */
 
 #resultado,
-#carbono,
+#lucro,
 #curiosidade{
     margin-top:20px;
 
@@ -158,7 +158,7 @@ button:hover{
 }
 
 #resultado h3,
-#carbono h3{
+#lucro h3{
     color:#2e7d32;
     margin-bottom:10px;
 }
@@ -201,30 +201,6 @@ button:hover{
 
 .badges div:hover{
     transform:translateY(-3px);
-}
-
-/* ==========================
-   RODAPÉ
-========================== */
-
-footer{
-    background:#1b5e20;
-
-    color:white;
-
-    text-align:center;
-
-    padding:25px;
-
-    margin-top:30px;
-}
-
-footer h3{
-    margin-bottom:10px;
-}
-
-footer p{
-    margin:5px 0;
 }
 
 /* ==========================
