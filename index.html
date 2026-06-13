@@ -1,180 +1,188 @@
 <!DOCTYPE html>
+
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AgroBalance - Agrinho 2026</title>
 
-    <link rel="stylesheet" href="style.css">
+```
+<link rel="stylesheet" href="style.css">
+```
+
 </head>
 <body>
 
-    <!-- CABEÇALHO -->
+```
+<!-- CABEÇALHO -->
 
-    <header>
+<header>
 
-        <div class="logo">
-            <h1>🌱 AgroBalance</h1>
-            <p>Agricultura Sustentável para o Futuro</p>
-        </div>
+    <div class="logo">
+        <h1>🌱 AgroBalance</h1>
+        <p>Agricultura Sustentável para o Futuro</p>
+    </div>
 
-        <nav>
-            <a href="#inicio">Início</a>
-            <a href="#diagnostico">Diagnóstico</a>
-            <a href="#calculadora">Calculadora Verde</a>
-            <a href="#conquistas">Conquistas</a>
-        </nav>
+    <nav>
+        <a href="#inicio">Início</a>
+        <a href="#diagnostico">Diagnóstico</a>
+        <a href="#calculadora">Calculadora de Lucro</a>
+        <a href="#conquistas">Conquistas</a>
+    </nav>
 
-    </header>
+</header>
 
-    <!-- BOAS VINDAS -->
+<!-- BOAS VINDAS -->
 
-    <section class="container" id="inicio">
+<section class="container" id="inicio">
 
-        <h2>Bem-vindo ao AgroBalance</h2>
+    <h2>Bem-vindo ao AgroBalance</h2>
 
-        <p>
-            O AgroBalance ajuda agricultores a analisar suas propriedades,
-            melhorar a sustentabilidade e aumentar a produtividade de forma
-            responsável com o meio ambiente.
-        </p>
+    <p>
+        O AgroBalance ajuda agricultores a analisar suas propriedades,
+        melhorar a sustentabilidade e aumentar a produtividade de forma
+        responsável com o meio ambiente.
+    </p>
 
-    </section>
+</section>
 
-    <!-- DIAGNÓSTICO -->
+<!-- DIAGNÓSTICO -->
 
-    <section class="container" id="diagnostico">
+<section class="container" id="diagnostico">
 
-        <h2>📊 Diagnóstico da Propriedade</h2>
+    <h2>📊 Diagnóstico da Propriedade</h2>
 
-        <label>📏 Quantos alqueires possui?</label>
-        <input type="number" id="alqueires" min="1">
+    <label>📏 Quantos alqueires possui?</label>
+    <input type="number" id="alqueires" min="1">
 
-        <label>🌾 Cultura Principal</label>
-        <select id="cultura">
-            <option>Soja</option>
-            <option>Milho</option>
-            <option>Feijão</option>
-            <option>Trigo</option>
-            <option>Arroz</option>
-            <option>Mandioca</option>
-            <option>Batata</option>
-            <option>Cebola</option>
-            <option>Alho</option>
-            <option>Tomate</option>
-            <option>Cana-de-açúcar</option>
-            <option>Café</option>
-            <option>Laranja</option>
-            <option>Banana</option>
-            <option>Maçã</option>
-            <option>Uva</option>
-            <option>Abacaxi</option>
-            <option>Melancia</option>
-            <option>Melão</option>
-            <option>Hortaliças</option>
-        </select>
+    <label>🌾 Cultura Principal</label>
+    <select id="cultura">
+        <option>Soja</option>
+        <option>Milho</option>
+        <option>Feijão</option>
+        <option>Trigo</option>
+        <option>Arroz</option>
+        <option>Mandioca</option>
+        <option>Batata</option>
+        <option>Cebola</option>
+        <option>Alho</option>
+        <option>Tomate</option>
+        <option>Cana-de-açúcar</option>
+        <option>Café</option>
+        <option>Laranja</option>
+        <option>Banana</option>
+        <option>Maçã</option>
+        <option>Uva</option>
+        <option>Abacaxi</option>
+        <option>Melancia</option>
+        <option>Melão</option>
+        <option>Hortaliças</option>
+    </select>
 
-        <label>🌱 Condição do Solo</label>
-        <select id="solo">
-            <option>Boa</option>
-            <option>Regular</option>
-            <option>Ruim</option>
-        </select>
+    <label>🌱 Condição do Solo</label>
+    <select id="solo">
+        <option>Boa</option>
+        <option>Regular</option>
+        <option>Ruim</option>
+    </select>
 
-        <label>🌳 Possui árvores?</label>
-        <select id="arvores">
-            <option>Sim</option>
-            <option>Não</option>
-        </select>
+    <label>🌳 Possui árvores?</label>
+    <select id="arvores">
+        <option>Sim</option>
+        <option>Não</option>
+    </select>
 
-        <label>💧 Possui nascente?</label>
-        <select id="nascente">
-            <option>Sim</option>
-            <option>Não</option>
-        </select>
+    <label>💧 Possui nascente?</label>
+    <select id="nascente">
+        <option>Sim</option>
+        <option>Não</option>
+    </select>
 
-        <label>🧪 Usa muitos produtos químicos?</label>
-        <select id="quimicos">
-            <option>Não</option>
-            <option>Sim</option>
-        </select>
+    <label>🧪 Usa muitos produtos químicos?</label>
+    <select id="quimicos">
+        <option>Não</option>
+        <option>Sim</option>
+    </select>
 
-        <button onclick="gerarRelatorio()">
-            📊 Gerar Relatório
-        </button>
+    <button onclick="gerarRelatorio()">
+        📊 Gerar Relatório
+    </button>
 
-        <div id="resultado"></div>
+    <div id="resultado"></div>
 
-    </section>
+</section>
 
-    <!-- CALCULADORA VERDE -->
+<!-- CALCULADORA DE LUCRO -->
 
-    <section class="container" id="calculadora">
+<section class="container" id="calculadora">
 
-        <h2>🌳 Calculadora Verde</h2>
+    <h2>💰 Calculadora de Lucro Agrícola</h2>
 
-        <label>Quantidade de Alqueires</label>
-        <input type="number" id="calcAlqueires" min="1">
+    <label>🌾 Produto</label>
+    <select id="produto">
+        <option value="140">Soja - R$ 140/saca</option>
+        <option value="65">Milho - R$ 65/saca</option>
+        <option value="250">Feijão - R$ 250/saca</option>
+        <option value="85">Trigo - R$ 85/saca</option>
+        <option value="75">Arroz - R$ 75/saca</option>
+        <option value="1100">Café - R$ 1.100/saca</option>
+        <option value="45">Hortaliças - R$ 45/caixa</option>
+        <option value="35">Mandioca - R$ 35/saca</option>
+        <option value="50">Batata - R$ 50/saca</option>
+        <option value="60">Cebola - R$ 60/saca</option>
+        <option value="80">Alho - R$ 80/saca</option>
+        <option value="70">Tomate - R$ 70/caixa</option>
+        <option value="95">Laranja - R$ 95/caixa</option>
+        <option value="90">Banana - R$ 90/caixa</option>
+        <option value="120">Maçã - R$ 120/caixa</option>
+        <option value="130">Uva - R$ 130/caixa</option>
+        <option value="100">Abacaxi - R$ 100/caixa</option>
+        <option value="110">Melancia - R$ 110/caixa</option>
+        <option value="115">Melão - R$ 115/caixa</option>
+    </select>
 
-        <button onclick="calcularCarbono()">
-            Calcular
-        </button>
+    <label>📦 Quantidade de Sacas/Caixas</label>
+    <input type="number" id="sacas" min="1">
 
-        <div id="carbono"></div>
+    <button onclick="calcularLucro()">
+        💰 Calcular Ganho
+    </button>
 
-    </section>
+    <div id="lucro"></div>
 
-    <!-- CONQUISTAS -->
+</section>
 
-    <section class="container" id="conquistas">
+<!-- CONQUISTAS -->
 
-        <h2>🏆 Conquistas</h2>
+<section class="container" id="conquistas">
 
-        <div class="badges">
+    <h2>🏆 Conquistas</h2>
 
-            <div>🌱 Agricultor Sustentável</div>
+    <div class="badges">
+        <div>🌱 Agricultor Sustentável</div>
+        <div>💧 Protetor das Águas</div>
+        <div>🌳 Amigo da Natureza</div>
+        <div>♻️ Guardião do Solo</div>
+    </div>
 
-            <div>💧 Protetor das Águas</div>
+</section>
 
-            <div>🌳 Amigo da Natureza</div>
+<!-- CURIOSIDADES -->
 
-            <div>♻️ Guardião do Solo</div>
+<section class="container">
 
-        </div>
+    <h2>💡 Curiosidade do Dia</h2>
 
-    </section>
+    <button onclick="mostrarCuriosidade()">
+        Mostrar Curiosidade
+    </button>
 
-    <!-- CURIOSIDADES -->
+    <div id="curiosidade"></div>
 
-    <section class="container">
+</section>
 
-        <h2>💡 Curiosidade do Dia</h2>
-
-        <button onclick="mostrarCuriosidade()">
-            Mostrar Curiosidade
-        </button>
-
-        <div id="curiosidade"></div>
-
-    </section>
-
-    <!-- RODAPÉ -->
-
-    <footer>
-
-        <h3>Projeto Agrinho 2026</h3>
-
-        <p>Tecnologia e Sustentabilidade no Campo</p>
-
-        <p>
-            Leonardo Gianini e Pedro Henrique de Oliveira Alves
-        </p>
-
-        <p>Turma: 1º Ano</p>
-
-    </footer>
-
-    <script src="script.js"></script>
+<script src="script.js"></script>
+```
 
 </body>
 </html>
