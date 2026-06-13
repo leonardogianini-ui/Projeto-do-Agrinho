@@ -19,10 +19,6 @@ function gerarRelatorio() {
         return;
     }
 
-    // ===========================
-    // CLASSIFICAÇÃO
-    // ===========================
-
     let classificacao = "";
 
     if (alqueires <= 20) {
@@ -39,39 +35,15 @@ function gerarRelatorio() {
 
     }
 
-    // ===========================
-    // ÍNDICE DE SUSTENTABILIDADE
-    // ===========================
-
     let indice = 50;
 
-    if (solo === "Boa") {
-        indice += 15;
-    }
+    if (solo === "Boa") indice += 15;
+    if (solo === "Regular") indice += 5;
+    if (arvores === "Sim") indice += 15;
+    if (nascente === "Sim") indice += 10;
+    if (quimicos === "Não") indice += 10;
 
-    if (solo === "Regular") {
-        indice += 5;
-    }
-
-    if (arvores === "Sim") {
-        indice += 15;
-    }
-
-    if (nascente === "Sim") {
-        indice += 10;
-    }
-
-    if (quimicos === "Não") {
-        indice += 10;
-    }
-
-    if (indice > 100) {
-        indice = 100;
-    }
-
-    // ===========================
-    // NÍVEL
-    // ===========================
+    if (indice > 100) indice = 100;
 
     let nivel = "";
 
@@ -88,10 +60,6 @@ function gerarRelatorio() {
         nivel = "🔴 Precisa Melhorar";
 
     }
-
-    // ===========================
-    // RECOMENDAÇÕES
-    // ===========================
 
     let recomendacoes = "";
 
@@ -114,10 +82,6 @@ function gerarRelatorio() {
     recomendacoes += "<li>🚜 Fazer rotação de culturas.</li>";
     recomendacoes += "<li>🌿 Utilizar biofertilizantes.</li>";
 
-    // ===========================
-    // RESULTADO
-    // ===========================
-
     document.getElementById("resultado").innerHTML = `
 
         <h3>📋 Resultado do Diagnóstico</h3>
@@ -139,48 +103,60 @@ function gerarRelatorio() {
     `;
 }
 
+
 // ===========================
-// CALCULADORA VERDE
+// CALCULADORA DE LUCRO
 // ===========================
 
-function calcularCarbono() {
+function calcularLucro() {
 
-    let alqueires =
-    Number(document.getElementById("calcAlqueires").value);
+    let preco =
+    Number(document.getElementById("produto").value);
 
-    if (alqueires <= 0) {
+    let quantidade =
+    Number(document.getElementById("sacas").value);
 
-        document.getElementById("carbono").innerHTML =
+    if (quantidade <= 0) {
+
+        document.getElementById("lucro").innerHTML =
         "<p>⚠️ Digite uma quantidade válida.</p>";
 
         return;
     }
 
-    let carbono = alqueires * 2;
-    let arvores = alqueires * 10;
-    let economia = alqueires * 150;
+    let produto =
+    document.getElementById("produto");
 
-    document.getElementById("carbono").innerHTML = `
+    let nomeProduto =
+    produto.options[produto.selectedIndex].text;
 
-        <h3>🌳 Resultado Ambiental</h3>
+    let total = preco * quantidade;
+
+    document.getElementById("lucro").innerHTML = `
+
+        <h3>💰 Resultado da Venda</h3>
 
         <p>
-            🌲 Árvores equivalentes:
-            <strong>${arvores}</strong>
+            <strong>Produto:</strong>
+            ${nomeProduto}
         </p>
 
         <p>
-            ♻️ Redução estimada de carbono:
-            <strong>${carbono} toneladas</strong>
+            <strong>Quantidade:</strong>
+            ${quantidade}
         </p>
 
         <p>
-            💰 Economia anual estimada:
-            <strong>R$ ${economia.toLocaleString('pt-BR')}</strong>
+            <strong>Valor estimado de venda:</strong>
+            R$ ${total.toLocaleString('pt-BR', {
+                minimumFractionDigits: 2,
+                maximumFractionDigits: 2
+            })}
         </p>
 
     `;
 }
+
 
 // ===========================
 // CURIOSIDADES
@@ -206,6 +182,7 @@ const curiosidades = [
 
 ];
 
+
 // ===========================
 // MOSTRAR CURIOSIDADE
 // ===========================
@@ -216,6 +193,5 @@ function mostrarCuriosidade() {
     Math.floor(Math.random() * curiosidades.length);
 
     document.getElementById("curiosidade").innerHTML =
-
     `<p>${curiosidades[numero]}</p>`;
 }
